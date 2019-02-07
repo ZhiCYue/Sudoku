@@ -11,7 +11,7 @@
 
 # gulp
 ```
-访问 www 目录中的 index.html 即可。
+访问 www 目录中的 index.html 即可
 
 
 # 参考
