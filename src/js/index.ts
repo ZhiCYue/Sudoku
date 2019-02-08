@@ -1,5 +1,5 @@
-const Grid = require("./ui/grid");
-const PopupNumbers = require("./ui/popupnumbers");
+import Grid from "./ui/grid";
+import PopupNumbers from "./ui/popupnumbers";
 
 const grid = new Grid($("#container"));
 grid.build();

@@ -2,20 +2,29 @@
 module.exports = {
   mode: "development",
   entry: {
-    index: "./js/index.js"
+    index: "./js/index"
   },
   output: {
     filename: "[name].js"
   },
   devtool: "source-map",
   resolve: {
-    extensions: [".js"]
+    extensions: [".ts"]
   },
   module: {
     rules: [
       {
-        test: /\.js/,
-        loader: 'babel-loader'
+        test: /\.ts$/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ["es2015"]
+            }
+          },
+          "ts-loader"
+        ],
+        exclude: /node_modules/
       }
     ]
   }

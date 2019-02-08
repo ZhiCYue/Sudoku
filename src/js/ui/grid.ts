@@ -1,10 +1,13 @@
 // 生成九宫格
 
-const Sudoku = require("../core/sudoku");
-const Checker = require("../core/checker");
+import Sudoku from "../core/sudoku";
+import Checker from "../core/checker";
+import PopupNumbers from "./popupnumbers";
 
 class Grid {
-  constructor(container) {
+  private _$container: JQuery;
+
+  constructor(container: JQuery) {
     this._$container = container;
   }
 
@@ -35,12 +38,12 @@ class Grid {
   }
 
   layout() {
-    const width = $("span:first", this._$container).width;
+    const width = $("span:first", this._$container).width();
     $("span", this._$container)
       .height(width)
       .css({
         "line-height": `${width}px`,
-        "font-size": widht < 32 ? `${width / 2}px` : `${width}`
+        "font-size": width < 32 ? `${width / 2}px` : `${width}`
       });
   }
 
@@ -48,13 +51,13 @@ class Grid {
    * 检查结果
    */
   check() {
-    const $rows = this._$container.children();
-    // tip: map 是 jquery 的 map
-    const data = $rows.map((rowIndex, div) => {
-      return $(div).children().map((colIndex, span) => parseInt($(span).text()) || 0)
-    })
-    .toArray()
-    .map($data => $data.toArray());
+    const data = this._$container.children()
+        .toArray()
+        .map((div: HTMLElement): number[] => {
+          return $(div).children()
+              .toArray()
+              .map(span => parseInt($(span).text(), 10) || 0);
+        });
 
     const checker = new Checker(data);
     if (checker.check()) {
@@ -100,7 +103,7 @@ class Grid {
     // this.layout();
   }
 
-  bindPopup(popupNumbers) {
+  bindPopup(popupNumbers: PopupNumbers) {
     this._$container.on("click", "span", e => {
       const $cell = $(e.target);
       if ($cell.is(".fixed")) {
@@ -111,4 +114,5 @@ class Grid {
   }
 }
 
-module.exports = Grid;
+export { Grid };
+export default Grid;

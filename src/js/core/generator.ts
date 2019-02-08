@@ -1,9 +1,12 @@
 // 生成数独解决方案
-const Toolkit = require("./toolkit");
+import Toolkit from "./toolkit";
 
-module.exports = class Generator {
+export class Generator {
+  matrix: number[][];
+  
+  orders: number[][];
 
-  generate() {
+  generate(): void {
     while (!this.internalGenerate()) {
       console.warn("try again.");
     }
@@ -18,11 +21,11 @@ module.exports = class Generator {
     return Toolkit.matrix.makeRow().every((n, i) => this.fillNumber(i + 1));
   }
 
-  fillNumber(n) {
+  private fillNumber(n: number) {
     return this.fillRow(n, 0);
   }
 
-  fillRow(n, rowIndex) {
+  private fillRow(n: number, rowIndex: number) {
     if (rowIndex > 8) return true;
 
     const row = this.matrix[rowIndex];
@@ -52,3 +55,5 @@ module.exports = class Generator {
   }
 
 };
+
+export default Generator;

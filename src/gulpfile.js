@@ -3,8 +3,8 @@ const gulp = require("gulp");
 gulp.task("webpack", () => {
   const webpack = require("webpack-stream");
   const config = require("./webpack.config.js");
-  return gulp.src("./js/**/*.js")
-      .pipe(webpack(config))
+  return gulp.src("./js/**/*.ts")
+      .pipe(webpack(config, require("webpack")))
       .pipe(gulp.dest("../www/js"));
 });
 
