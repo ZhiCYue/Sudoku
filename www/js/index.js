@@ -81,15 +81,15 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./js/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./js/core/checker.js":
-/*!****************************!*\
-  !*** ./js/core/checker.js ***!
-  \****************************/
+/***/ "./src/js/core/checker.js":
+/*!********************************!*\
+  !*** ./src/js/core/checker.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -123,7 +123,7 @@ function checkArray(array) {
   return marks;
 }
 
-const Toolkit = __webpack_require__(/*! ./toolkit */ "./js/core/toolkit.js");
+const Toolkit = __webpack_require__(/*! ./toolkit */ "./src/js/core/toolkit.js");
 
 // 输入： matrix， 用户完成的数据，9 x 9
 // 处理： 对 matrix 行、列、宫进行检查，并填写 marks
@@ -197,15 +197,15 @@ module.exports = class Checker {
 
 /***/ }),
 
-/***/ "./js/core/generator.js":
-/*!******************************!*\
-  !*** ./js/core/generator.js ***!
-  \******************************/
+/***/ "./src/js/core/generator.js":
+/*!**********************************!*\
+  !*** ./src/js/core/generator.js ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 生成数独解决方案
-const Toolkit = __webpack_require__(/*! ./toolkit */ "./js/core/toolkit.js");
+const Toolkit = __webpack_require__(/*! ./toolkit */ "./src/js/core/toolkit.js");
 
 module.exports = class Generator {
 
@@ -259,10 +259,10 @@ module.exports = class Generator {
 
 /***/ }),
 
-/***/ "./js/core/sudoku.js":
-/*!***************************!*\
-  !*** ./js/core/sudoku.js ***!
-  \***************************/
+/***/ "./src/js/core/sudoku.js":
+/*!*******************************!*\
+  !*** ./src/js/core/sudoku.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -270,7 +270,7 @@ module.exports = class Generator {
 // 1. 生成完整的解决方案：generator
 // 2. 随机去除部分数据：按比例
 
-const Generator = __webpack_require__(/*! ../core/generator */ "./js/core/generator.js");
+const Generator = __webpack_require__(/*! ../core/generator */ "./src/js/core/generator.js");
 
 module.exports = class Sudoku {
 
@@ -290,10 +290,10 @@ module.exports = class Sudoku {
 
 /***/ }),
 
-/***/ "./js/core/toolkit.js":
-/*!****************************!*\
-  !*** ./js/core/toolkit.js ***!
-  \****************************/
+/***/ "./src/js/core/toolkit.js":
+/*!********************************!*\
+  !*** ./src/js/core/toolkit.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -395,15 +395,15 @@ module.exports = class Toolkit {
 
 /***/ }),
 
-/***/ "./js/index.js":
-/*!*********************!*\
-  !*** ./js/index.js ***!
-  \*********************/
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const Grid = __webpack_require__(/*! ./ui/grid */ "./js/ui/grid.js");
-const PopupNumbers = __webpack_require__(/*! ./ui/popupnumbers */ "./js/ui/popupnumbers.js");
+const Grid = __webpack_require__(/*! ./ui/grid */ "./src/js/ui/grid.js");
+const PopupNumbers = __webpack_require__(/*! ./ui/popupnumbers */ "./src/js/ui/popupnumbers.js");
 
 const grid = new Grid($("#container"));
 grid.build();
@@ -413,37 +413,37 @@ grid.build();
 const popupNumbers = new PopupNumbers($("#popupNumbers"));
 grid.bindPopup(popupNumbers);
 
-$("#check").on("click", e => {
+$("#check").on("click", () => {
   if (grid.check()) {
     alert("成功");
   }
 });
 
-$("#reset").on("click", e => {
+$("#reset").on("click", () => {
   grid.reset();
 });
 
-$("#clear").on("click", e => {
+$("#clear").on("click", () => {
   grid.clear();
 });
 
-$("#rebuild").on("click", e => {
+$("#rebuild").on("click", () => {
   grid.rebuild();
 });
 
 /***/ }),
 
-/***/ "./js/ui/grid.js":
-/*!***********************!*\
-  !*** ./js/ui/grid.js ***!
-  \***********************/
+/***/ "./src/js/ui/grid.js":
+/*!***************************!*\
+  !*** ./src/js/ui/grid.js ***!
+  \***************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 生成九宫格
 
-const Sudoku = __webpack_require__(/*! ../core/sudoku */ "./js/core/sudoku.js");
-const Checker = __webpack_require__(/*! ../core/checker */ "./js/core/checker.js");
+const Sudoku = __webpack_require__(/*! ../core/sudoku */ "./src/js/core/sudoku.js");
+const Checker = __webpack_require__(/*! ../core/checker */ "./src/js/core/checker.js");
 
 class Grid {
   constructor(container) {
@@ -541,10 +541,10 @@ module.exports = Grid;
 
 /***/ }),
 
-/***/ "./js/ui/popupnumbers.js":
-/*!*******************************!*\
-  !*** ./js/ui/popupnumbers.js ***!
-  \*******************************/
+/***/ "./src/js/ui/popupnumbers.js":
+/*!***********************************!*\
+  !*** ./src/js/ui/popupnumbers.js ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

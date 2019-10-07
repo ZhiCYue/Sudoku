@@ -1,10 +1,14 @@
+html,
+body {
+  height: 100%;
+}
 html {
   font-size: 14px;
 }
 body {
-  margin: 0;
+  margin: auto;
   padding: 0;
-  background: #eee;
+  background: #fff;
   font-family: "Consolas", "微软雅黑";
   user-select: none;
   max-width: 450px;
@@ -181,7 +185,8 @@ body > * {
 .dashboard {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   padding: 1rem 0;
   background: steelblue;
